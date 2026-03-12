@@ -11,28 +11,37 @@ struct HomeView: View {
     var heroTextTitle = Constants.testTitleURL
     
     var body: some View {
-        VStack {
-            AsyncImage(url: URL(string: heroTextTitle)){ image in
-                image
-                    .resizable()
-                    .scaledToFit()
-            } placeholder: {
-                ProgressView()
-            }
-            
-            HStack {
-                Button {
+        GeometryReader { geo in
+            ScrollView(.vertical) {
+                LazyVStack {
+                    AsyncImage(url: URL(string: heroTextTitle)){ image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: geo.size.width, height: geo.size.height * 0.85)
                     
-                } label: {
-                    Text(Constants.playString)
-                        .ghostbutton()
-                }
-                
-                Button {
-                    
-                } label: {
-                    Text(Constants.downloadString)
-                        .ghostbutton()
+                    HStack {
+                        Button {
+                            
+                        } label: {
+                            Text(Constants.playString)
+                                .ghostbutton()
+                        }
+                        
+                        Button {
+                            
+                        } label: {
+                            Text(Constants.downloadString)
+                                .ghostbutton()
+                        }
+                    }
+                    HorizontalListView(header: Constants.trendingMovieString)
+                    HorizontalListView(header: Constants.trendingTVString)
+                    HorizontalListView(header: Constants.topRatedMovieString)
+                    HorizontalListView(header: Constants.topRatedTVString)
                 }
             }
         }
