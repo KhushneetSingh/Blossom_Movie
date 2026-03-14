@@ -1,0 +1,17 @@
+# API Keys
+Config/APIConfig.json
+**/APIConfig.json
+
+# Xcode user data
+xcuserdata/
+*.xcuserstate
+*.pbxuser
+
+# macOS
+.DS_Store
+
+# Build files
+DerivedData/
+build/
+*.moved-aside
+.swiftpm/
