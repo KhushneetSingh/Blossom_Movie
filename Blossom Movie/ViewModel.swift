@@ -16,7 +16,7 @@ class ViewModel {
         case failed(underlyingError: Error)
     }
     private(set) var homestatus: FetchStatus = .notStarted
-    private let dataFetcher: DataFetcher()
+    private let dataFetcher = DataFetcher()
     var trendingMovies: [Title] = []
     
     func getTitles() async {
